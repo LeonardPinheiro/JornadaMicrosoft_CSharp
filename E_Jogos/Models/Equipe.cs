@@ -19,7 +19,7 @@ namespace E_Jogos.Models
 
         public Equipe()
         {
-            CreateFolderAndFile(path);
+            CreateFolderAndFile(Path);
         }
 
      
@@ -29,6 +29,8 @@ namespace E_Jogos.Models
         public int Nome { get; set; }
 
         public int Imagem { get; set; }
+
+        public static string Path => path;
 
 
 
@@ -46,7 +48,7 @@ namespace E_Jogos.Models
             string[] linha = { $"{nova_equipe.IdEquipe}; {nova_equipe.Nome}; {nova_equipe.Imagem}" };
 
 
-            File.AppendAllLines(path, linha);
+            File.AppendAllLines(Path, linha);
 
         }
 
@@ -58,7 +60,7 @@ namespace E_Jogos.Models
         public List<Equipe> ReadAll()
         {
             List<Equipe> equipes = new List<Equipe>();
-            string[] linhas = File.ReadAllLines(path);
+            string[] linhas = File.ReadAllLines(Path);
 
             foreach(string item in linhas)
             {
